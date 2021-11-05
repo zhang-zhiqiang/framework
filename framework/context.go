@@ -18,9 +18,8 @@ type Context struct {
     ctx            context.Context
     handler        ControllerHandler
 
-    // 是否超时标记
+    // 是否超时标记位
     hasTimeout bool
-
     // 写保护机制
     writerMux *sync.Mutex
 }
@@ -35,54 +34,53 @@ func NewContext(r *http.Request, w http.ResponseWriter) *Context {
 }
 
 // #region base function
-func (ctx Context) WriterMux() *sync.Mutex {
+
+func (ctx *Context) WriterMux() *sync.Mutex {
     return ctx.writerMux
 }
 
-func (ctx Context) GetRequest() *http.Request {
+func (ctx *Context) GetRequest() *http.Request {
     return ctx.request
 }
 
-func (ctx Context) GetResponse() http.ResponseWriter {
+func (ctx *Context) GetResponse() http.ResponseWriter {
     return ctx.responseWriter
 }
 
-func (ctx Context) SetHasTimeout() {
+func (ctx *Context) SetHasTimeout() {
     ctx.hasTimeout = true
 }
 
-func (ctx Context) HasTimeout() bool {
+func (ctx *Context) HasTimeout() bool {
     return ctx.hasTimeout
 }
 
 // #endregion
 
-func (ctx Context) BaseContext() context.Context {
+func (ctx *Context) BaseContext() context.Context {
     return ctx.request.Context()
 }
 
 // #region implement context.Context
-
-func (ctx Context) Deadline() (deadline time.Time, ok bool) {
+func (ctx *Context) Deadline() (deadline time.Time, ok bool) {
     return ctx.BaseContext().Deadline()
 }
 
-func (ctx Context) Done() <-chan struct{} {
+func (ctx *Context) Done() <-chan struct{} {
     return ctx.BaseContext().Done()
 }
 
-func (ctx Context) Err() error {
+func (ctx *Context) Err() error {
     return ctx.BaseContext().Err()
 }
 
-func (ctx Context) Value(key interface{}) interface{} {
+func (ctx *Context) Value(key interface{}) interface{} {
     return ctx.BaseContext().Value(key)
 }
 
 // #endregion
 
 // #region query url
-
 func (ctx *Context) QueryInt(key string, def int) int {
     params := ctx.QueryAll()
     if vals, ok := params[key]; ok {
@@ -98,7 +96,7 @@ func (ctx *Context) QueryInt(key string, def int) int {
     return def
 }
 
-func (ctx *Context) QueryString(key, def string) string {
+func (ctx *Context) QueryString(key string, def string) string {
     params := ctx.QueryAll()
     if vals, ok := params[key]; ok {
         len := len(vals)
@@ -124,7 +122,7 @@ func (ctx *Context) QueryAll() map[string][]string {
     return map[string][]string{}
 }
 
-// #endregion query url
+// #endregion
 
 // #region form post
 func (ctx *Context) FormInt(key string, def int) int {
@@ -142,7 +140,7 @@ func (ctx *Context) FormInt(key string, def int) int {
     return def
 }
 
-func (ctx *Context) FormString(key, def string) string {
+func (ctx *Context) FormString(key string, def string) string {
     params := ctx.FormAll()
     if vals, ok := params[key]; ok {
         len := len(vals)
@@ -168,7 +166,7 @@ func (ctx *Context) FormAll() map[string][]string {
     return map[string][]string{}
 }
 
-// #endregion form url
+// #endregion
 
 // #region application/json post
 
@@ -190,14 +188,15 @@ func (ctx *Context) BindJson(obj interface{}) error {
     return nil
 }
 
-// #endregion json
+// #endregion
 
 // #region response
+
 func (ctx *Context) Json(status int, obj interface{}) error {
-    if ctx.hasTimeout {
+    if ctx.HasTimeout() {
         return nil
     }
-    ctx.responseWriter.Header().Set("Content-type", "application/json")
+    ctx.responseWriter.Header().Set("Content-Type", "application/json")
     ctx.responseWriter.WriteHeader(status)
     byt, err := json.Marshal(obj)
     if err != nil {
@@ -208,7 +207,7 @@ func (ctx *Context) Json(status int, obj interface{}) error {
     return nil
 }
 
-func (ctx *Context) Html(status int, obj interface{}, template string) error {
+func (ctx *Context) HTML(status int, obj interface{}, template string) error {
     return nil
 }
 
@@ -216,4 +215,4 @@ func (ctx *Context) Text(status int, obj string) error {
     return nil
 }
 
-// #endgion response
+// #endregion
