@@ -16,8 +16,8 @@ func NewCore() *Core {
 	router := map[string]*Tree{}
 	router["GET"] = NewTree()
 	router["POST"] = NewTree()
-	router["put"] = NewTree()
-	router["delete"] = NewTree()
+	router["PUT"] = NewTree()
+	router["DELETE"] = NewTree()
 	return &Core{router: router}
 }
 
