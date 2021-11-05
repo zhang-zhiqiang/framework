@@ -23,7 +23,7 @@ func FooControllerHandler(c *framework.Context) error {
             }
         }()
         // Do real action
-        time.Sleep(10 * time.Second)
+        time.Sleep(1 * time.Second)
         c.Json(200, "ok")
 
         finish <- struct{}{}
