@@ -6,6 +6,7 @@ import (
 	"log"
 	"time"
 )
+
 func TimeoutHandler(fun ControllerHandler, d time.Duration) ControllerHandler {
 	return func(c *Context) error {
 		finish := make(chan struct{}, 1)
