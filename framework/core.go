@@ -84,7 +84,7 @@ func (c *Core) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 
 	node := c.FindRouteNodeByRequest(request)
 	if node == nil {
-		ctx.Json(404, "not found")
+		ctx.SetStatus(404).Json("not found")
 		return
 	}
 
@@ -94,7 +94,7 @@ func (c *Core) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 	ctx.SetParams(params)
 
 	if err := ctx.Next(); err != nil {
-		ctx.Json(500, "inner error")
+		ctx.SetStatus(500).Json("inner error")
 		return
 	}
 }

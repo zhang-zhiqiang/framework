@@ -12,11 +12,11 @@ type Tree struct {
 
 // 代表节点
 type node struct {
-	isLast  bool              // 该节点是否能成为一个独立的uri, 是否自身就是一个终极节点
-	segment string            // uri中的字符串
+	isLast   bool                // 该节点是否能成为一个独立的uri, 是否自身就是一个终极节点
+	segment  string              // uri中的字符串
 	handlers []ControllerHandler // 控制器
-	childs  []*node           // 子节点
-	parent *node // 父节点，双向指针
+	childs   []*node             // 子节点
+	parent   *node               // 父节点，双向指针
 }
 
 func newNode() *node {
@@ -175,9 +175,9 @@ func (n *node) ParseParamsFromEndNode(uri string) map[string]string {
 	segments := strings.Split(uri, "/")
 	cnt := len(segments)
 	cur := n
-	if i := cnt - 1; i >= 0; i-- {
+	for i := cnt - 1; i >= 0; i-- {
 		if cur.segment == "" {
-			break;
+			break
 		}
 		if isWildSegment(cur.segment) {
 			ret[cur.segment[1:]] = segments[i]
