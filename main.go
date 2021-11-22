@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"github.com/gohade/hade/demo"
 	"github.com/gohade/hade/framework/gin"
 	"github.com/gohade/hade/framework/middleware"
 	"log"
@@ -14,6 +15,8 @@ import (
 
 func main() {
 	core := gin.New()
+
+	core.Bind(&demo.DemoServiceProvider{})
 
 	core.Use(gin.Recovery())
 	core.Use(middleware.Cost())
