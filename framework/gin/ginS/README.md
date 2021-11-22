@@ -6,8 +6,8 @@ This is API experiment for Gin.
 package main
 
 import (
-	"github.com/gin-gonic/gin/framework/gin"
-	"github.com/gin-gonic/gin/framework/gin/ginS"
+	"github.com/gohade/hade/framework/gin"
+	"github.com/gohade/hade/framework/gin/ginS"
 )
 
 func main() {
