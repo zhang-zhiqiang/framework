@@ -20,6 +20,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/gohade/hade/framework"
+	"github.com/robfig/cron/v3"
 	"io"
 	"os"
 	"path/filepath"
@@ -37,6 +38,10 @@ type FParseErrWhitelist flag.ParseErrorsWhitelist
 // you to define the usage and description as part of your command
 // definition to ensure usability.
 type Command struct {
+	// Command 支持 cron， 只在RootCommand 中有这个值
+	Cron *cron.Cron
+	// 对应 Cron命令的信息
+	CronSpecs []CronSpec
 	container framework.Container
 	// Use is the one-line usage message.
 	// Recommended syntax is as follow:
