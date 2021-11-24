@@ -3,6 +3,7 @@ module github.com/gohade/hade
 go 1.15
 
 require (
+	github.com/erikdubbelboer/gspt v0.0.0-20210805194459-ce36a5128377 // indirect
 	github.com/gin-contrib/sse v0.1.0
 	github.com/go-playground/validator/v10 v10.9.0
 	github.com/goccy/go-json v0.7.10
