@@ -2,7 +2,6 @@ package demo
 
 import (
 	demoService "github.com/gohade/hade/app/provider/demo"
-	"github.com/gohade/hade/framework/contract"
 	"github.com/gohade/hade/framework/gin"
 )
 
@@ -33,8 +32,8 @@ func NewDemoApi() *DemoApi {
 // @Success 200 array []UserDTO
 // @Router /demo/demo [get]
 func (api *DemoApi) Demo(c *gin.Context) {
-	configService := c.MustMake(contract.ConfigKey).(contract.Config)
-	password := configService.GetString("DB_PASSWORD")
+	//configService := c.MustMake(contract.ConfigKey).(contract.Config)
+	password := 4311234
 	c.JSON(200, password)
 }
 
