@@ -33,7 +33,7 @@ func NewDemoApi() *DemoApi {
 // @Router /demo/demo [get]
 func (api *DemoApi) Demo(c *gin.Context) {
 	//configService := c.MustMake(contract.ConfigKey).(contract.Config)
-	password := 4311234
+	password := 1234
 	c.JSON(200, password)
 }
 
