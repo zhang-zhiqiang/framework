@@ -10,15 +10,13 @@ func AddKernelCommands(root *cobra.Command) {
 	root.AddCommand(initProviderCommand())
 	// env
 	root.AddCommand(envCommand)
-	//root.AddCommand(deployCommand)
-	//
-	//// cron
+
+	// cron
 	root.AddCommand(initCronCommand())
-	//// cmd
-	//cmdCommand.AddCommand(cmdListCommand)
-	//cmdCommand.AddCommand(cmdCreateCommand)
-	//root.AddCommand(cmdCommand)
-	//
+
+	// cmd
+	root.AddCommand(initCmdCommand())
+
 	//// build
 	//buildCommand.AddCommand(buildSelfCommand)
 	//buildCommand.AddCommand(buildBackendCommand)

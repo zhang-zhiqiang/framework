@@ -1,11 +1,9 @@
 package console
 
 import (
-	"github.com/gohade/hade/app/console/command/demo"
 	"github.com/gohade/hade/framework"
 	"github.com/gohade/hade/framework/cobra"
 	"github.com/gohade/hade/framework/command"
-	"time"
 )
 
 func RunCommand(container framework.Container) error {
@@ -42,5 +40,5 @@ func AddAppCommand(rootCmd *cobra.Command) {
 	//  demo 例子
 	//rootCmd.AddCommand(demo.InitFoo())
 	//rootCmd.AddCronCommand("* * * * * *", demo.FooCommand)
-	rootCmd.AddDistributedCronCommand("foo_func_for_test", "*/5 * * * * *", demo.FooCommand, 3*time.Second)
+	//rootCmd.AddDistributedCronCommand("foo_func_for_test", "*/5 * * * * *", demo.FooCommand, 3*time.Second)
 }
