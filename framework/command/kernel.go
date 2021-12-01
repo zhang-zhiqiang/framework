@@ -6,6 +6,9 @@ import "github.com/gohade/hade/framework/cobra"
 func AddKernelCommands(root *cobra.Command) {
 	//root.AddCommand(DemoCommand)
 
+	// provider
+	root.AddCommand(initProviderCommand())
+	// env
 	root.AddCommand(envCommand)
 	//root.AddCommand(deployCommand)
 	//
