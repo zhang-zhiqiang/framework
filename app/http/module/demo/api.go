@@ -2,7 +2,9 @@ package demo
 
 import (
 	demoService "github.com/gohade/hade/app/provider/demo"
+	"github.com/gohade/hade/framework/contract"
 	"github.com/gohade/hade/framework/gin"
+	"path"
 )
 
 type DemoApi struct {
@@ -33,8 +35,12 @@ func NewDemoApi() *DemoApi {
 // @Router /demo/demo [get]
 func (api *DemoApi) Demo(c *gin.Context) {
 	//configService := c.MustMake(contract.ConfigKey).(contract.Config)
-	password := 1234
-	c.JSON(200, password)
+	//password := 1234
+
+	appService := c.MustMake(contract.AppKey).(contract.App)
+	middlewarePath := path.Join(appService.BaseFolder(), "app", "http", "middleware")
+	//middlewarePath = "2134"
+	c.JSON(200, middlewarePath)
 }
 
 // Demo godoc
