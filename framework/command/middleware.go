@@ -163,10 +163,13 @@ var middlewareCreateCommand = &cobra.Command{
 			}
 		}
 
+		if folder == "" {
+			folder = name
+		}
+
 		app := container.MustMake(contract.AppKey).(contract.App)
 
 		pFolder := app.MiddlewareFolder()
-		fmt.Println(pFolder)
 		subFolders, err := util.SubDir(pFolder)
 		if err != nil {
 			return err

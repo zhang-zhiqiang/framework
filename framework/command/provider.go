@@ -97,7 +97,6 @@ var providerCreateCommand = &cobra.Command{
 		app := container.MustMake(contract.AppKey).(contract.App)
 
 		pFolder := app.ProviderFolder()
-		fmt.Println("appFolder " + pFolder)
 		subFolders, err := util.SubDir(pFolder)
 		if err != nil {
 			return err
