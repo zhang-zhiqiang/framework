@@ -39,7 +39,8 @@ func (api *DemoApi) Demo(c *gin.Context) {
 
 	appService := c.MustMake(contract.AppKey).(contract.App)
 	middlewarePath := path.Join(appService.BaseFolder(), "app", "http", "middleware")
-	//middlewarePath = "2134"
+
+	//userDto := UserDTO{ID: 43, Name: "name"}
 	c.JSON(200, middlewarePath)
 }
 

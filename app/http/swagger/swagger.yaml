@@ -1,3 +1,4 @@
+basePath: /
 definitions:
   demo.UserDTO:
     properties:
@@ -7,7 +8,16 @@ definitions:
         type: string
     type: object
 info:
-  contact: {}
+  contact:
+    email: yejianfeng
+    name: yejianfeng1
+  description: hade测试
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://github.com/swaggo/swag
+  title: hade
+  version: "1.1"
 paths:
   /demo/demo:
     get:
@@ -43,4 +53,13 @@ paths:
       summary: 获取所有学生
       tags:
       - demo
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  BasicAuth:
+    type: basic
 swagger: "2.0"
+x-extension-openapi:
+  example: value on a json format

@@ -1,8 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "hade测试",
+        "title": "hade",
+        "termsOfService": "https://github.com/swaggo/swag",
+        "contact": {
+            "name": "yejianfeng1",
+            "email": "yejianfeng"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.1"
     },
+    "basePath": "/",
     "paths": {
         "/demo/demo": {
             "get": {
@@ -69,5 +81,18 @@
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        },
+        "BasicAuth": {
+            "type": "basic"
+        }
+    },
+    "x-extension-openapi": {
+        "example": "value on a json format"
     }
 }

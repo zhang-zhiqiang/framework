@@ -10,7 +10,7 @@ import (
 
 	"golang.org/x/net/webdav"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gohade/hade/framework/gin"
 	"github.com/swaggo/swag"
 )
 
