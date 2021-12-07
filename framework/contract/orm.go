@@ -1,12 +1,10 @@
 package contract
 
 import (
-	"fmt"
 	"github.com/go-sql-driver/mysql"
 	"github.com/gohade/hade/framework"
 	"gorm.io/gorm"
 	"net"
-	"reflect"
 	"strconv"
 	"time"
 )
@@ -54,22 +52,18 @@ type DBConfig struct {
 // FormatDsn 生成dsn
 func (conf *DBConfig) FormatDsn() (string, error) {
 	port := strconv.Itoa(conf.Port)
-	fmt.Printf("timeout %v %v \n", reflect.TypeOf(conf.Timeout), conf.Timeout)
 	timeout, err := time.ParseDuration(conf.Timeout)
 	if err != nil {
 		return "", err
 	}
-	fmt.Printf("readtimeout %v %v \n", reflect.TypeOf(conf.ReadTimeout), conf.ReadTimeout)
 	readTimeout, err := time.ParseDuration(conf.ReadTimeout)
 	if err != nil {
 		return "", err
 	}
-	fmt.Printf("write time out %v %v \n", reflect.TypeOf(conf.WriteTimeout), conf.WriteTimeout)
 	writeTimeout, err := time.ParseDuration(conf.WriteTimeout)
 	if err != nil {
 		return "", err
 	}
-	fmt.Printf("end \n")
 	location, err := time.LoadLocation(conf.Loc)
 	if err != nil {
 		return "", err

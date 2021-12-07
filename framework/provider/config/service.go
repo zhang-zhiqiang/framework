@@ -89,11 +89,6 @@ func NewHadeConfig(params ...interface{}) (interface{}, error) {
 	envFolder := params[1].(string)
 	envMaps := params[2].(map[string]string)
 
-	// 检查文件夹是否存在
-	if _, err := os.Stat(envFolder); os.IsNotExist(err) {
-		return nil, errors.New("folder " + envFolder + " not exist: " + err.Error())
-	}
-
 	// 实例化
 	hadeConf := &HadeConfig{
 		c:        container,
@@ -103,6 +98,13 @@ func NewHadeConfig(params ...interface{}) (interface{}, error) {
 		confRaws: map[string][]byte{},
 		keyDelim: ".",
 		lock:     sync.RWMutex{},
+	}
+
+	// 检查文件夹是否存在
+	if _, err := os.Stat(envFolder); os.IsNotExist(err) {
+		// 这里修改成为不返回错误，是让new方法可以通过
+		return hadeConf, nil
+		//return nil, errors.New("folder " + envFolder + " not exist: " + err.Error())
 	}
 
 	// 读取每个文件
@@ -287,5 +289,13 @@ func (conf *HadeConfig) GetStringMapStringSlice(key string) map[string][]string 
 
 // Load a config to a struct, val should be an pointer
 func (conf *HadeConfig) Load(key string, val interface{}) error {
-	return mapstructure.Decode(conf.find(key), val)
+	decoder, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{
+		TagName: "yaml",
+		Result:  val,
+	})
+	if err != nil {
+		return err
+	}
+
+	return decoder.Decode(conf.find(key))
 }

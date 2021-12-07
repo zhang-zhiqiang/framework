@@ -2,7 +2,6 @@ package orm
 
 import (
 	"context"
-	"fmt"
 	"github.com/gohade/hade/framework"
 	"github.com/gohade/hade/framework/contract"
 	"gorm.io/gorm"
@@ -15,7 +14,6 @@ func GetBaseConfig(c framework.Container) *contract.DBConfig {
 	config := &contract.DBConfig{}
 	// 直接使用配置服务的load方法读取,yaml文件
 	err := configService.Load("database", config)
-	fmt.Printf("config %v", *config)
 
 	if err != nil {
 		// 直接使用logService来打印错误信息

@@ -37,9 +37,6 @@ func (app *HadeGorm) GetDB(option ...contract.DBOption) (*gorm.DB, error) {
 	logger := app.container.MustMake(contract.LogKey).(contract.Log)
 
 	config := GetBaseConfig(app.container)
-	fmt.Printf("conf %v    \n &config %v \n", *config, &config)
-	fmt.Println("read  " + config.ReadTimeout)
-	fmt.Println("wri  " + config.WriteTimeout)
 
 	logService := app.container.MustMake(contract.LogKey).(contract.Log)
 
