@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.2
+	github.com/ClickHouse/clickhouse-go v1.5.1 // indirect
 	github.com/Microsoft/go-winio v0.5.1 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20211112122917-428f8eabeeb3 // indirect
 	github.com/erikdubbelboer/gspt v0.0.0-20210805194459-ce36a5128377
@@ -14,15 +15,18 @@ require (
 	github.com/go-git/go-git/v5 v5.4.2
 	github.com/go-openapi/spec v0.20.4 // indirect
 	github.com/go-playground/validator/v10 v10.9.0
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/go-yaml/yaml v2.1.0+incompatible // indirect
 	github.com/goccy/go-json v0.7.10
 	github.com/google/go-github/v39 v39.2.0
 	github.com/google/uuid v1.3.0
+	github.com/jackc/pgx/v4 v4.14.1 // indirect
 	github.com/jianfengye/collection v1.3.2
+	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/json-iterator/go v1.1.12
 	github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0 // indirect
 	github.com/kevinburke/ssh_config v1.1.0 // indirect
-	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible // indirect
+	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
 	github.com/lestrrat-go/strftime v1.0.5 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
@@ -31,7 +35,7 @@ require (
 	github.com/mitchellh/mapstructure v1.4.1
 	github.com/pkg/errors v0.9.1
 	github.com/robfig/cron/v3 v3.0.0
-	github.com/rs/xid v1.3.0 // indirect
+	github.com/rs/xid v1.3.0
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/sevlyar/go-daemon v0.1.5
 	github.com/smartystreets/goconvey v1.7.2 // indirect
@@ -52,4 +56,10 @@ require (
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/src-d/go-git.v4 v4.13.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0
+	gorm.io/driver/clickhouse v0.2.2
+	gorm.io/driver/mysql v1.2.1
+	gorm.io/driver/postgres v1.2.3
+	gorm.io/driver/sqlite v1.2.6
+	gorm.io/driver/sqlserver v1.2.1
+	gorm.io/gorm v1.22.4
 )
