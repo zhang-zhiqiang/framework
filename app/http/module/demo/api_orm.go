@@ -18,7 +18,7 @@ func (api *DemoApi) DemoOrm(c *gin.Context) {
 	db, err := gormService.GetDB(orm.WithConfigPath("database.default"))
 	if err != nil {
 		logger.Error(c, err.Error(), nil)
-		//c.AbortWithError(50001, err)
+		c.AbortWithError(50001, err)
 		return
 	}
 	db.WithContext(c)
